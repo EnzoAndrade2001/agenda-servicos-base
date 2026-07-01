@@ -1,0 +1,25 @@
+{
+  "name": "agenda-servicos-base",
+  "version": "1.0.0",
+  "description": "Sistema base para agendamento online de servicos com painel admin, pagamentos e WhatsApp.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=22 <25"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "hash:admin": "node scripts/hash-admin-password.js",
+    "migrate": "node -e \"require('./src/config/migrations').executarMigracoes().then(() => process.exit()).catch(e => { console.error(e); process.exit(1); })\"",
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "pg": "^8.21.0"
+  }
+}

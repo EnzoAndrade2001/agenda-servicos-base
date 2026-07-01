@@ -1,0 +1,60 @@
+services:
+  - type: web
+    name: agenda-servicos-base
+    runtime: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /api/health
+    autoDeployTrigger: commit
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: DB_SSL
+        value: "true"
+      - key: CORS_ORIGIN
+        sync: false
+      - key: ADMIN_PATH
+        value: /painel-admin
+      - key: ADMIN_TOKEN
+        sync: false
+      - key: ADMIN_USER
+        sync: false
+      - key: ADMIN_PASSWORD_HASH
+        sync: false
+      - key: ADMIN_SESSION_SECRET
+        sync: false
+      - key: PUBLIC_BASE_URL
+        sync: false
+      - key: BUSINESS_NAME
+        value: Agenda de Servicos
+      - key: BUSINESS_SHORT_NAME
+        value: Agenda
+      - key: BUSINESS_OWNER_NAME
+        value: Equipe
+      - key: BUSINESS_INITIAL
+        value: A
+      - key: BUSINESS_SEGMENT
+        value: Atendimento com hora marcada
+      - key: BUSINESS_REGION
+        value: Informe sua regiao
+      - key: WHATSAPP_BUSINESS_NUMBER
+        sync: false
+      - key: PAYMENT_PROVIDER
+        value: asaas
+      - key: ASAAS_ENV
+        value: production
+      - key: ASAAS_API_KEY
+        sync: false
+      - key: ASAAS_WEBHOOK_TOKEN
+        sync: false
+      - key: BUSINESS_PIX_KEY_TYPE
+        sync: false
+      - key: BUSINESS_PIX_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: OPENAI_MODEL
+        value: gpt-4.1-mini

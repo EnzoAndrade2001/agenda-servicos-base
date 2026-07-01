@@ -1,0 +1,52 @@
+{
+    "name": "Agenda de Servicos Admin",
+    "short_name": "Agenda Admin",
+    "start_url": "/painel-admin",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#fff3f6",
+    "theme_color": "#ffdce7",
+    "description": "Painel administrativo da agenda de servicos.",
+    "categories": ["business", "productivity"],
+    "icons": [
+        {
+            "src": "/icon-180.png?v=1",
+            "sizes": "180x180",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/icon-512.png?v=1",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/icon.svg?v=2",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Agenda do dia",
+            "short_name": "Agenda",
+            "url": "/painel-admin#agenda",
+            "description": "Abrir agenda do dia"
+        },
+        {
+            "name": "Novo horario",
+            "short_name": "Agendar",
+            "url": "/painel-admin#novo-horario",
+            "description": "Criar novo horario"
+        },
+        {
+            "name": "Repasses",
+            "short_name": "Repasse",
+            "url": "/painel-admin#repasse",
+            "description": "Abrir area de repasse"
+        }
+    ]
+}
