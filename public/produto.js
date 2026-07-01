@@ -26,8 +26,8 @@ async function carregarContato() {
         if (hint) hint.textContent = 'Fale no WhatsApp para ver planos, implantacao e demo guiada.';
     } catch (error) {
         botoes.forEach((botao) => {
-            botao.href = '/';
-            botao.textContent = 'Ver demo publica';
+            botao.href = '/admin';
+            botao.textContent = 'Ver painel em demo';
         });
         if (hint) hint.textContent = 'Configure SALES_WHATSAPP_NUMBER no ambiente para ativar o botao de WhatsApp desta pagina.';
     }
