@@ -1,24 +1,24 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
   <defs>
     <linearGradient id="bg" x1="64" y1="36" x2="448" y2="476" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#FFF7FA"/>
-      <stop offset="0.52" stop-color="#FFE0E9"/>
-      <stop offset="1" stop-color="#EFB6C8"/>
+      <stop offset="0" stop-color="#F8FBFC"/>
+      <stop offset="0.52" stop-color="#E7F3F4"/>
+      <stop offset="1" stop-color="#B7D6DB"/>
     </linearGradient>
     <linearGradient id="mark" x1="150" y1="130" x2="366" y2="390" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#C85F7A"/>
-      <stop offset="1" stop-color="#613544"/>
+      <stop offset="0" stop-color="#2F8F98"/>
+      <stop offset="1" stop-color="#17343A"/>
     </linearGradient>
   </defs>
   <rect width="512" height="512" rx="112" fill="url(#bg)"/>
-  <rect x="112" y="132" width="288" height="256" rx="56" fill="#FFFDFE" stroke="#E8A8BA" stroke-width="18"/>
-  <path d="M154 198h204" stroke="#E8A8BA" stroke-width="18" stroke-linecap="round"/>
+  <rect x="112" y="132" width="288" height="256" rx="56" fill="#FFFFFF" stroke="#A7C9CE" stroke-width="18"/>
+  <path d="M154 198h204" stroke="#A7C9CE" stroke-width="18" stroke-linecap="round"/>
   <path d="M180 112v56M332 112v56" stroke="#7B4050" stroke-width="22" stroke-linecap="round"/>
-  <circle cx="190" cy="258" r="17" fill="#F0BDCB"/>
-  <circle cx="256" cy="258" r="17" fill="#F0BDCB"/>
-  <circle cx="322" cy="258" r="17" fill="#F0BDCB"/>
-  <circle cx="190" cy="322" r="17" fill="#F0BDCB"/>
-  <circle cx="256" cy="322" r="17" fill="#F0BDCB"/>
-  <circle cx="322" cy="322" r="17" fill="#F0BDCB"/>
+  <circle cx="190" cy="258" r="17" fill="#B7D6DB"/>
+  <circle cx="256" cy="258" r="17" fill="#B7D6DB"/>
+  <circle cx="322" cy="258" r="17" fill="#B7D6DB"/>
+  <circle cx="190" cy="322" r="17" fill="#B7D6DB"/>
+  <circle cx="256" cy="322" r="17" fill="#B7D6DB"/>
+  <circle cx="322" cy="322" r="17" fill="#B7D6DB"/>
   <path d="M152 390c43-73 73-145 90-216h47c17 71 47 143 90 216h-54c-9-17-18-35-26-54H232c-8 19-17 37-26 54h-54Zm98-99h131c-19-48-35-93-46-136h-39c-11 43-27 88-46 136Z" fill="url(#mark)"/>
 </svg>

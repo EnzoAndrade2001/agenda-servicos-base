@@ -121,8 +121,8 @@ function createApp() {
             scope: '/',
             display: 'standalone',
             orientation: 'portrait',
-            background_color: '#fff3f6',
-            theme_color: '#ffdce7',
+            background_color: '#f4f7f8',
+            theme_color: '#f4f7f8',
             description: `Agendamento online de ${negocio.nome}.`,
             categories: ['beauty', 'business', 'lifestyle'],
             icons: [
@@ -144,8 +144,8 @@ function createApp() {
             scope: '/',
             display: 'standalone',
             orientation: 'portrait',
-            background_color: '#fff3f6',
-            theme_color: '#ffdce7',
+            background_color: '#f4f7f8',
+            theme_color: '#f4f7f8',
             description: `Painel administrativo da agenda ${negocio.nome}.`,
             categories: ['business', 'productivity'],
             icons: [
