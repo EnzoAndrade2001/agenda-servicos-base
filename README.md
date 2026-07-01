@@ -89,6 +89,8 @@ Uma combinacao simples para comecar:
 O arquivo `render.yaml` ja sobe o Web Service. No Render, preencha as variaveis
 marcadas como secretas e configure `PUBLIC_BASE_URL` com a URL final.
 
+Para configurar um cliente novo, siga o roteiro em `SETUP_CLIENTE.md`.
+
 ## Pagamentos
 
 Pagamentos online usam Asaas:

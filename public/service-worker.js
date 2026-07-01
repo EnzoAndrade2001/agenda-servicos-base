@@ -1,4 +1,4 @@
-const CACHE_NAME = 'agenda-servicos-base-v1';
+const CACHE_NAME = 'agenda-servicos-base-v2';
 const STATIC_ASSETS = [
     '/',
     '/styles.css?v=18',

@@ -58,14 +58,6 @@ async function disponibilidade(req, res) {
          ) AS slot(inicio)
          WHERE EXTRACT(ISODOW FROM $1::date)::smallint = ANY(c.dias_funcionamento)
            AND slot.inicio >= NOW()
-           AND (
-               EXTRACT(ISODOW FROM $1::date)::smallint NOT BETWEEN 1 AND 5
-               OR (
-                   (slot.inicio AT TIME ZONE 'America/Sao_Paulo')::time < TIME '11:30'
-                   AND ((slot.inicio + make_interval(mins => s.duracao_minutos)) AT TIME ZONE 'America/Sao_Paulo')::time <= TIME '11:30'
-               )
-               OR (slot.inicio AT TIME ZONE 'America/Sao_Paulo')::time >= TIME '19:30'
-           )
            AND NOT EXISTS (
                SELECT 1 FROM agendamentos a
                WHERE a.status NOT IN ('cancelado', 'faltou')
@@ -102,14 +94,7 @@ async function gradeDisponibilidade(req, res) {
                 WHERE b.inicio < slot.inicio + make_interval(mins => s.duracao_minutos)
                   AND b.fim > slot.inicio
             ) AS bloqueado,
-            NOT (
-                EXTRACT(ISODOW FROM $1::date)::smallint NOT BETWEEN 1 AND 5
-                OR (
-                    (slot.inicio AT TIME ZONE 'America/Sao_Paulo')::time < TIME '11:30'
-                    AND ((slot.inicio + make_interval(mins => s.duracao_minutos)) AT TIME ZONE 'America/Sao_Paulo')::time <= TIME '11:30'
-                )
-                OR (slot.inicio AT TIME ZONE 'America/Sao_Paulo')::time >= TIME '19:30'
-            ) AS fora_jornada
+            FALSE AS fora_jornada
          FROM configuracoes c
          JOIN servicos s ON s.id = $2 AND s.ativo
          CROSS JOIN LATERAL generate_series(
@@ -156,25 +141,12 @@ async function horariosDisponiveis(req, res) {
                 make_interval(mins => c.intervalo_minutos)
             ) AS slot(inicio)
             WHERE EXTRACT(ISODOW FROM $1::date)::smallint = ANY(c.dias_funcionamento)
-              AND (
-                  EXTRACT(ISODOW FROM $1::date)::smallint NOT BETWEEN 1 AND 5
-                  OR (slot.inicio AT TIME ZONE 'America/Sao_Paulo')::time < TIME '11:30'
-                  OR (slot.inicio AT TIME ZONE 'America/Sao_Paulo')::time >= TIME '19:30'
-              )
               AND EXISTS (
                   SELECT 1
                   FROM servicos s
                   WHERE s.ativo
                     AND slot.inicio + make_interval(mins => s.duracao_minutos)
                         <= (($1::date + c.horario_fechamento) AT TIME ZONE 'America/Sao_Paulo')
-                    AND (
-                        EXTRACT(ISODOW FROM $1::date)::smallint NOT BETWEEN 1 AND 5
-                        OR (
-                            (slot.inicio AT TIME ZONE 'America/Sao_Paulo')::time < TIME '11:30'
-                            AND ((slot.inicio + make_interval(mins => s.duracao_minutos)) AT TIME ZONE 'America/Sao_Paulo')::time <= TIME '11:30'
-                        )
-                        OR (slot.inicio AT TIME ZONE 'America/Sao_Paulo')::time >= TIME '19:30'
-                    )
               )
         )
         SELECT
@@ -202,14 +174,6 @@ async function horariosDisponiveis(req, res) {
               AND slots.inicio >= NOW()
               AND slots.inicio + make_interval(mins => s.duracao_minutos)
                   <= (($1::date + c.horario_fechamento) AT TIME ZONE 'America/Sao_Paulo')
-              AND (
-                  EXTRACT(ISODOW FROM $1::date)::smallint NOT BETWEEN 1 AND 5
-                  OR (
-                      (slots.inicio AT TIME ZONE 'America/Sao_Paulo')::time < TIME '11:30'
-                      AND ((slots.inicio + make_interval(mins => s.duracao_minutos)) AT TIME ZONE 'America/Sao_Paulo')::time <= TIME '11:30'
-                  )
-                  OR (slots.inicio AT TIME ZONE 'America/Sao_Paulo')::time >= TIME '19:30'
-              )
               AND NOT EXISTS (
                   SELECT 1 FROM agendamentos a
                   WHERE a.status NOT IN ('cancelado', 'faltou')

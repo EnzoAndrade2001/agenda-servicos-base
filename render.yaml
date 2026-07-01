@@ -38,8 +38,16 @@ services:
         value: A
       - key: BUSINESS_SEGMENT
         value: Atendimento com hora marcada
+      - key: BUSINESS_SUBTITLE
+        value: Agendamento online simples, organizado e com pagamento integrado.
       - key: BUSINESS_REGION
         value: Informe sua regiao
+      - key: BUSINESS_BOOKING_TEXT
+        value: Veja horarios disponiveis e escolha entre os servicos que cabem na agenda.
+      - key: BUSINESS_LOCATION_TITLE
+        value: Atendimento com local combinado
+      - key: BUSINESS_LOCATION_DESCRIPTION
+        value: Endereco ou forma de atendimento combinados apos a confirmacao.
       - key: WHATSAPP_BUSINESS_NUMBER
         sync: false
       - key: PAYMENT_PROVIDER

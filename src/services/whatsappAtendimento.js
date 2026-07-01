@@ -73,14 +73,6 @@ async function horariosLivres(data, servicoId, limite = 8) {
          ) AS slot(inicio)
          WHERE EXTRACT(ISODOW FROM $1::date)::smallint = ANY(c.dias_funcionamento)
            AND slot.inicio >= NOW()
-           AND (
-               EXTRACT(ISODOW FROM $1::date)::smallint NOT BETWEEN 1 AND 5
-               OR (
-                   (slot.inicio AT TIME ZONE 'America/Sao_Paulo')::time < TIME '11:30'
-                   AND ((slot.inicio + make_interval(mins => s.duracao_minutos)) AT TIME ZONE 'America/Sao_Paulo')::time <= TIME '11:30'
-               )
-               OR (slot.inicio AT TIME ZONE 'America/Sao_Paulo')::time >= TIME '19:30'
-           )
            AND NOT EXISTS (
                SELECT 1 FROM agendamentos a
                WHERE a.status NOT IN ('cancelado', 'faltou')

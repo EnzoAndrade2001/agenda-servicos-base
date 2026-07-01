@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const { HttpError } = require('../utils/httpError');
 
-const COOKIE_NAME = 'karina_admin_session';
+const COOKIE_NAME = 'agenda_admin_session';
 const SESSION_SECONDS = 8 * 60 * 60;
 const WINDOW_MS = 15 * 60 * 1000;
 const MAX_ATTEMPTS = 8;
