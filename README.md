@@ -98,6 +98,9 @@ tambem podem ser ajustados diretamente no painel admin, na aba `Negocio`.
 Para divulgar o AgendaPro, use a pagina `/produto`. Configure
 `SALES_WHATSAPP_NUMBER` para ativar o botao comercial de WhatsApp.
 
+Para publicar uma demo comercial com a landing na URL principal, siga
+`DEPLOY_COMERCIAL.md`.
+
 ## Pagamentos
 
 Pagamentos online usam Asaas:

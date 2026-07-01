@@ -74,6 +74,8 @@ function applyCors(req, res, next) {
 function createApp() {
     const app = express();
     const adminPath = process.env.ADMIN_PATH || '/admin';
+    const productLandingHome = process.env.PRODUCT_LANDING_HOME === 'true';
+    const demoClientPath = process.env.DEMO_CLIENT_PATH || '/demo';
     const publicDir = path.join(__dirname, '..', 'public');
     app.disable('x-powered-by');
     app.set('trust proxy', 1);
@@ -98,15 +100,17 @@ function createApp() {
     });
     app.get('/sitemap.xml', (req, res) => {
         const baseUrl = (process.env.PUBLIC_BASE_URL || `${req.protocol}://${req.get('host')}`).replace(/\/$/, '');
+        const homePath = productLandingHome ? '/produto' : '/';
+        const demoPath = productLandingHome ? demoClientPath : '/';
         res.type('application/xml').send(`<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>${baseUrl}/</loc>
+    <loc>${baseUrl}${homePath === '/produto' ? '/' : homePath}</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>${baseUrl}/servicos</loc>
+    <loc>${baseUrl}${demoPath}</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -122,7 +126,7 @@ function createApp() {
         res.type('application/manifest+json').json({
             name: negocio.nome,
             short_name: negocio.nome_curto,
-            start_url: '/',
+            start_url: productLandingHome ? demoClientPath : '/',
             scope: '/',
             display: 'standalone',
             orientation: 'portrait',
@@ -134,8 +138,8 @@ function createApp() {
                 { src: '/icon.svg?v=3', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }
             ],
             shortcuts: [
-                { name: 'Horarios', short_name: 'Horarios', url: '/#horarios', description: 'Ver horarios disponiveis' },
-                { name: 'Servicos', short_name: 'Servicos', url: '/#servicos', description: 'Ver servicos e valores' },
+                { name: 'Horarios', short_name: 'Horarios', url: `${demoClientPath}#horarios`, description: 'Ver horarios disponiveis' },
+                { name: 'Servicos', short_name: 'Servicos', url: `${demoClientPath}#servicos`, description: 'Ver servicos e valores' },
                 { name: 'Painel admin', short_name: 'Admin', url: adminPath, description: 'Abrir painel administrativo' }
             ]
         });
@@ -170,6 +174,10 @@ function createApp() {
     if (adminPath !== '/admin') {
         app.get('/admin', (req, res) => res.status(404).send('Not found'));
     }
+    if (productLandingHome) {
+        app.get('/', (req, res) => res.sendFile(path.join(publicDir, 'produto.html')));
+    }
+    app.get(demoClientPath, (req, res) => res.sendFile(path.join(publicDir, 'index.html')));
     app.use(express.static(publicDir));
     app.get('/servicos', (req, res) => res.sendFile(path.join(publicDir, 'index.html')));
     app.get('/produto', (req, res) => res.sendFile(path.join(publicDir, 'produto.html')));
