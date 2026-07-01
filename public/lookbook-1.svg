@@ -1,20 +1,17 @@
 <svg width="900" height="1100" viewBox="0 0 900 1100" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="900" height="1100" fill="#FFF4F7"/>
-  <rect x="50" y="50" width="800" height="1000" rx="56" fill="url(#bg1)"/>
-  <circle cx="730" cy="180" r="110" fill="#FFE1EA"/>
-  <circle cx="230" cy="860" r="130" fill="#FFD2DF"/>
-  <path d="M210 730C210 575 315 430 450 430C585 430 690 575 690 730V810H210V730Z" fill="#F7C7D3"/>
-  <rect x="245" y="345" width="95" height="255" rx="46" transform="rotate(-16 245 345)" fill="#FFF9FB"/>
-  <rect x="352" y="295" width="108" height="310" rx="52" transform="rotate(-8 352 295)" fill="#FFD9E5"/>
-  <rect x="470" y="295" width="108" height="310" rx="52" transform="rotate(8 470 295)" fill="#FFF9FB"/>
-  <rect x="586" y="345" width="95" height="255" rx="46" transform="rotate(16 586 345)" fill="#FFC2D4"/>
-  <path d="M308 282C308 228 348 188 402 188H417C457 188 489 220 489 260V334H308V282Z" fill="#F1B0C1"/>
-  <rect x="240" y="774" width="420" height="100" rx="50" fill="#FFF9FB" fill-opacity="0.72"/>
-  <text x="450" y="835" text-anchor="middle" fill="#7B4350" font-size="48" font-family="Georgia, serif" font-style="italic">Gel delicado</text>
+  <rect width="900" height="1100" fill="#FFF5F8"/>
+  <rect x="56" y="56" width="788" height="988" rx="58" fill="url(#bg)"/>
+  <rect x="178" y="210" width="544" height="640" rx="42" fill="#FFFDFE" stroke="#E8A8BA" stroke-width="18"/>
+  <path d="M222 310h456M222 414h456M222 518h456M222 622h300" stroke="#F0C4D0" stroke-width="28" stroke-linecap="round"/>
+  <circle cx="300" cy="748" r="44" fill="#C85F7A"/>
+  <circle cx="450" cy="748" r="44" fill="#7B4050"/>
+  <circle cx="600" cy="748" r="44" fill="#EFB6C8"/>
+  <rect x="250" y="884" width="400" height="96" rx="48" fill="#FFFDFE" fill-opacity="0.82"/>
+  <text x="450" y="944" text-anchor="middle" fill="#6C3948" font-size="44" font-family="Arial, sans-serif" font-weight="700">Atendimento</text>
   <defs>
-    <linearGradient id="bg1" x1="100" y1="100" x2="800" y2="980" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#FFFDFE"/>
-      <stop offset="1" stop-color="#FFD8E4"/>
+    <linearGradient id="bg" x1="70" y1="80" x2="826" y2="1040" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFDCE7"/>
     </linearGradient>
   </defs>
 </svg>

@@ -126,9 +126,7 @@ function createApp() {
             description: `Agendamento online de ${negocio.nome}.`,
             categories: ['beauty', 'business', 'lifestyle'],
             icons: [
-                { src: '/icon-180.png?v=1', sizes: '180x180', type: 'image/png', purpose: 'any' },
-                { src: '/icon-512.png?v=1', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
-                { src: '/icon.svg?v=2', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }
+                { src: '/icon.svg?v=3', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }
             ],
             shortcuts: [
                 { name: 'Horarios', short_name: 'Horarios', url: '/#horarios', description: 'Ver horarios disponiveis' },
@@ -151,9 +149,7 @@ function createApp() {
             description: `Painel administrativo da agenda ${negocio.nome}.`,
             categories: ['business', 'productivity'],
             icons: [
-                { src: '/icon-180.png?v=1', sizes: '180x180', type: 'image/png', purpose: 'any' },
-                { src: '/icon-512.png?v=1', sizes: '512x512', type: 'image/png', purpose: 'any maskable' },
-                { src: '/icon.svg?v=2', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }
+                { src: '/icon.svg?v=3', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' }
             ],
             shortcuts: [
                 { name: 'Agenda do dia', short_name: 'Agenda', url: `${adminPath}#agenda`, description: 'Abrir agenda do dia' },

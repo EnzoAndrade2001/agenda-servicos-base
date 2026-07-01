@@ -12,7 +12,8 @@ Use este roteiro sempre que clonar a base para um novo negocio.
 
 ## 2. Identidade
 
-Configurar no Render:
+Configurar no Render como padrao inicial ou ajustar depois no painel admin, na
+aba `Negocio`:
 
 ```env
 BUSINESS_NAME="Nome do Negocio"

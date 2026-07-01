@@ -9,9 +9,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Agenda Admin">
     <title>Admin | Agenda de Servicos</title>
-    <link rel="icon" type="image/svg+xml" href="/icon.svg?v=2">
-    <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png?v=1">
-    <link rel="manifest" href="/manifest-admin.webmanifest?v=4">
+    <link rel="icon" type="image/svg+xml" href="/icon.svg?v=3">
+    <link rel="apple-touch-icon" href="/icon.svg?v=3">
+    <link rel="manifest" href="/manifest-admin.webmanifest?v=5">
     <link rel="stylesheet" href="/styles.css?v=18">
     <style>
         [hidden],
@@ -77,6 +77,7 @@
         <a href="#novo-horario">Agendar</a>
         <a href="#cliente">Cliente</a>
         <a href="#servico">Servico</a>
+        <a href="#negocio">Negocio</a>
         <a href="#repasse">Repasse</a>
     </nav>
 
@@ -198,6 +199,53 @@
                         <input id="servicePrice" type="number" inputmode="decimal" min="0" step="0.01" required>
                     </label>
                     <button class="secondary-button wide" type="submit">Salvar servico</button>
+                </form>
+            </section>
+
+            <section class="panel compact-panel" id="negocio">
+                <h2>Negocio</h2>
+                <form id="businessForm" class="form-grid">
+                    <label>
+                        Nome publico
+                        <input id="businessName" type="text" maxlength="120" required>
+                    </label>
+                    <label>
+                        Nome curto
+                        <input id="businessShortName" type="text" maxlength="40" required>
+                    </label>
+                    <label>
+                        Responsavel
+                        <input id="businessOwner" type="text" maxlength="80" required>
+                    </label>
+                    <label>
+                        Inicial do logo
+                        <input id="businessInitial" type="text" maxlength="2" required>
+                    </label>
+                    <label class="wide">
+                        Segmento
+                        <input id="businessSegment" type="text" maxlength="120" required>
+                    </label>
+                    <label class="wide">
+                        Subtitulo
+                        <input id="businessSubtitle" type="text" maxlength="240" required>
+                    </label>
+                    <label class="wide">
+                        Regiao
+                        <input id="businessRegion" type="text" maxlength="120" required>
+                    </label>
+                    <label class="wide">
+                        Texto dos horarios
+                        <textarea id="businessBookingText" rows="2" maxlength="240" required></textarea>
+                    </label>
+                    <label class="wide">
+                        Titulo do local
+                        <input id="businessLocationTitle" type="text" maxlength="160" required>
+                    </label>
+                    <label class="wide">
+                        Descricao do local
+                        <textarea id="businessLocationDescription" rows="2" maxlength="240" required></textarea>
+                    </label>
+                    <button class="secondary-button wide" type="submit">Salvar negocio</button>
                 </form>
             </section>
 

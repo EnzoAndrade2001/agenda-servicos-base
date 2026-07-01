@@ -1,8 +1,8 @@
 const { pool } = require('../config/database');
 const configuracoes = require('../models/configuracoes');
+const negocioConfiguracoes = require('../models/negocioConfiguracoes');
 const pagamentos = require('../models/pagamentos');
 const repasses = require('./repassesController');
-const business = require('../config/business');
 const { HttpError } = require('../utils/httpError');
 const validacao = require('../utils/validation');
 
@@ -25,7 +25,7 @@ async function infoPublica(req, res) {
     const whatsapp = process.env.WHATSAPP_BUSINESS_NUMBER || null;
     const publicBaseUrl = process.env.PUBLIC_BASE_URL || null;
     const pagamentoConfigurado = pagamentoOnlineConfigurado();
-    const negocio = business.dadosNegocio();
+    const negocio = await negocioConfiguracoes.buscar();
     res.json({
         nome: negocio.nome,
         subtitulo: negocio.subtitulo,
@@ -250,6 +250,34 @@ async function buscarConfiguracoes(req, res) {
     res.json(await configuracoes.buscar());
 }
 
+async function buscarNegocio(req, res) {
+    res.json(await negocioConfiguracoes.buscar());
+}
+
+async function atualizarNegocio(req, res) {
+    const valores = {};
+    const regras = {
+        nome: 120,
+        nome_curto: 40,
+        proprietaria: 80,
+        inicial: 2,
+        segmento: 120,
+        subtitulo: 240,
+        regiao: 120,
+        frase_agendamento: 240,
+        local_titulo: 160,
+        local_descricao: 240
+    };
+    for (const [campo, max] of Object.entries(regras)) {
+        if (req.body[campo] !== undefined) {
+            valores[campo] = validacao.texto(req.body[campo], campo, { max });
+        }
+    }
+    if (valores.inicial) valores.inicial = valores.inicial.slice(0, 1).toUpperCase();
+    if (!Object.keys(valores).length) throw new HttpError(400, 'Nenhuma configuracao valida foi enviada.');
+    res.json(await negocioConfiguracoes.atualizar(valores));
+}
+
 async function atualizarConfiguracoes(req, res) {
     const valores = {};
     if (req.body.intervalo_minutos !== undefined) {
@@ -286,5 +314,7 @@ module.exports = {
     lembretesRetorno,
     resumo,
     buscarConfiguracoes,
-    atualizarConfiguracoes
+    atualizarConfiguracoes,
+    buscarNegocio,
+    atualizarNegocio
 };

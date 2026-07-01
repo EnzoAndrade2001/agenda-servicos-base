@@ -165,6 +165,23 @@ CREATE TABLE IF NOT EXISTS configuracoes (
 
 INSERT INTO configuracoes (id) VALUES (1) ON CONFLICT (id) DO NOTHING;
 
+CREATE TABLE IF NOT EXISTS negocio_configuracoes (
+    id SMALLINT PRIMARY KEY DEFAULT 1 CHECK (id = 1),
+    nome VARCHAR(120),
+    nome_curto VARCHAR(40),
+    proprietaria VARCHAR(80),
+    inicial VARCHAR(2),
+    segmento VARCHAR(120),
+    subtitulo VARCHAR(240),
+    regiao VARCHAR(120),
+    frase_agendamento VARCHAR(240),
+    local_titulo VARCHAR(160),
+    local_descricao VARCHAR(240),
+    atualizado_em TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+INSERT INTO negocio_configuracoes (id) VALUES (1) ON CONFLICT (id) DO NOTHING;
+
 ALTER TABLE configuracoes
     ALTER COLUMN horario_fechamento SET DEFAULT '22:30';
 

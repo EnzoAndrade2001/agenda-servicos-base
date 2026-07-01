@@ -2,6 +2,7 @@ const { pool } = require('../config/database');
 const agendamentos = require('../models/agendamentos');
 const clientes = require('../models/clientes');
 const servicosModel = require('../models/servicos');
+const negocioConfiguracoes = require('../models/negocioConfiguracoes');
 const openaiAssistant = require('./openaiAssistant');
 const business = require('../config/business');
 
@@ -141,7 +142,7 @@ async function criarPedido({ interpretacao, servico, telefone }) {
 async function responder({ telefone, nomeContato, mensagem }) {
     const servicos = await servicosModel.listar();
     const agora = new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
-    const negocio = business.dadosNegocio();
+    const negocio = await negocioConfiguracoes.buscar();
     const interpretacao = await openaiAssistant.interpretarMensagem({ mensagem, servicos, agora, negocio })
         || interpretarFallback(mensagem);
     const servico = encontrarServico(servicos, interpretacao.service_name);

@@ -39,6 +39,17 @@ const el = {
     serviceName: document.querySelector('#serviceName'),
     serviceDuration: document.querySelector('#serviceDuration'),
     servicePrice: document.querySelector('#servicePrice'),
+    businessForm: document.querySelector('#businessForm'),
+    businessName: document.querySelector('#businessName'),
+    businessShortName: document.querySelector('#businessShortName'),
+    businessOwner: document.querySelector('#businessOwner'),
+    businessInitial: document.querySelector('#businessInitial'),
+    businessSegment: document.querySelector('#businessSegment'),
+    businessSubtitle: document.querySelector('#businessSubtitle'),
+    businessRegion: document.querySelector('#businessRegion'),
+    businessBookingText: document.querySelector('#businessBookingText'),
+    businessLocationTitle: document.querySelector('#businessLocationTitle'),
+    businessLocationDescription: document.querySelector('#businessLocationDescription'),
     transferForm: document.querySelector('#transferForm'),
     transferAmount: document.querySelector('#transferAmount'),
     transferDefaultHint: document.querySelector('#transferDefaultHint'),
@@ -187,6 +198,21 @@ function applyBusinessInfo(negocio = {}) {
     if (el.transferDescription && !el.transferDescription.dataset.edited) {
         el.transferDescription.value = `Repasse ${state.business.nome}`;
     }
+    fillBusinessForm();
+}
+
+function fillBusinessForm() {
+    if (!el.businessForm) return;
+    el.businessName.value = state.business.nome || '';
+    el.businessShortName.value = state.business.nome_curto || '';
+    el.businessOwner.value = state.business.proprietaria || '';
+    el.businessInitial.value = state.business.inicial || '';
+    el.businessSegment.value = state.business.segmento || '';
+    el.businessSubtitle.value = state.business.subtitulo || '';
+    el.businessRegion.value = state.business.regiao || '';
+    el.businessBookingText.value = state.business.frase_agendamento || '';
+    el.businessLocationTitle.value = state.business.local_titulo || '';
+    el.businessLocationDescription.value = state.business.local_descricao || '';
 }
 
 function confirmAction({
@@ -857,6 +883,33 @@ el.serviceForm.addEventListener('submit', async (event) => {
         showToast(error.message);
     }
 });
+
+if (el.businessForm) {
+    el.businessForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        try {
+            const negocio = await api('/api/configuracoes/negocio', {
+                method: 'PATCH',
+                body: JSON.stringify({
+                    nome: el.businessName.value,
+                    nome_curto: el.businessShortName.value,
+                    proprietaria: el.businessOwner.value,
+                    inicial: el.businessInitial.value,
+                    segmento: el.businessSegment.value,
+                    subtitulo: el.businessSubtitle.value,
+                    regiao: el.businessRegion.value,
+                    frase_agendamento: el.businessBookingText.value,
+                    local_titulo: el.businessLocationTitle.value,
+                    local_descricao: el.businessLocationDescription.value
+                })
+            });
+            applyBusinessInfo(negocio);
+            showToast('Configuracao do negocio salva.');
+        } catch (error) {
+            showToast(error.message);
+        }
+    });
+}
 
 if (el.transferForm) {
     el.transferForm.addEventListener('submit', async (event) => {

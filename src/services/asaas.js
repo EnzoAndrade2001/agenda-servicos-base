@@ -1,5 +1,6 @@
 const { HttpError } = require('../utils/httpError');
 const business = require('../config/business');
+const negocioConfiguracoes = require('../models/negocioConfiguracoes');
 
 function ambiente() {
     return process.env.ASAAS_ENV === 'production' ? 'production' : 'sandbox';
@@ -56,6 +57,7 @@ async function criarCliente({ nome, email, cpfCnpj, telefone: telefoneCliente })
 }
 
 async function criarPagamentoPix({ agendamento, pagamento, cliente, cpfCnpj }) {
+    const negocio = await negocioConfiguracoes.buscar();
     const customer = await criarCliente({
         nome: agendamento.cliente_nome,
         email: cliente && cliente.email,
@@ -69,7 +71,7 @@ async function criarPagamentoPix({ agendamento, pagamento, cliente, cpfCnpj }) {
             billingType: 'PIX',
             value: Number(pagamento.valor),
             dueDate: hojeLocal(),
-            description: business.descricaoPagamento(pagamento.tipo, agendamento.servico_nome),
+            description: `${pagamento.tipo === 'sinal' ? 'Entrada' : 'Pagamento'} ${negocio.nome} - ${agendamento.servico_nome}`,
             externalReference: `agendamento:${agendamento.id}:pagamento:${pagamento.id}`
         })
     });
@@ -78,6 +80,7 @@ async function criarPagamentoPix({ agendamento, pagamento, cliente, cpfCnpj }) {
 }
 
 async function criarPagamentoCartao({ agendamento, pagamento, cliente, cpfCnpj }) {
+    const negocio = await negocioConfiguracoes.buscar();
     const customer = await criarCliente({
         nome: agendamento.cliente_nome,
         email: cliente && cliente.email,
@@ -91,7 +94,7 @@ async function criarPagamentoCartao({ agendamento, pagamento, cliente, cpfCnpj }
             billingType: 'CREDIT_CARD',
             value: Number(pagamento.valor),
             dueDate: hojeLocal(),
-            description: business.descricaoPagamento(pagamento.tipo, agendamento.servico_nome),
+            description: `${pagamento.tipo === 'sinal' ? 'Entrada' : 'Pagamento'} ${negocio.nome} - ${agendamento.servico_nome}`,
             externalReference: `agendamento:${agendamento.id}:pagamento:${pagamento.id}`
         })
     });

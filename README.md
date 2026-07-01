@@ -91,6 +91,9 @@ marcadas como secretas e configure `PUBLIC_BASE_URL` com a URL final.
 
 Para configurar um cliente novo, siga o roteiro em `SETUP_CLIENTE.md`.
 
+Depois do primeiro deploy, nome publico, responsavel, regiao e textos principais
+tambem podem ser ajustados diretamente no painel admin, na aba `Negocio`.
+
 ## Pagamentos
 
 Pagamentos online usam Asaas:
@@ -137,6 +140,7 @@ Sem `OPENAI_API_KEY`, o atendimento usa um modo guiado simples.
 | DELETE | `/api/bloqueios/:id` | Remover bloqueio |
 | GET | `/api/disponibilidade/horarios` | Horarios livres por data |
 | GET | `/api/resumo` | Resumo financeiro |
+| GET/PATCH | `/api/configuracoes/negocio` | Identidade publica do negocio |
 | POST | `/api/publico/agendamentos` | Reserva criada pelo site publico |
 | POST | `/api/webhooks/asaas` | Webhook de pagamentos |
 | GET/POST | `/api/webhooks/whatsapp` | Webhook de WhatsApp |

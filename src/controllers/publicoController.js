@@ -3,7 +3,7 @@ const clientes = require('../models/clientes');
 const pagamentos = require('../models/pagamentos');
 const asaas = require('../services/asaas');
 const whatsapp = require('../services/whatsappCloud');
-const business = require('../config/business');
+const negocioConfiguracoes = require('../models/negocioConfiguracoes');
 const { HttpError } = require('../utils/httpError');
 const validacao = require('../utils/validation');
 const regrasPagamento = require('../utils/paymentRules');
@@ -48,8 +48,8 @@ function numeroNotificacaoAdmin() {
     return process.env.WHATSAPP_ADMIN_NOTIFY_NUMBER || process.env.WHATSAPP_BUSINESS_NUMBER || null;
 }
 
-function montarMensagemAdmin({ agendamento, cliente }) {
-    const negocio = business.dadosNegocio();
+async function montarMensagemAdmin({ agendamento, cliente }) {
+    const negocio = await negocioConfiguracoes.buscar();
     return [
         `Novo pedido de horario pelo site ${negocio.nome}.`,
         '',
@@ -71,7 +71,7 @@ function whatsappUrlAdmin(texto) {
 }
 
 async function avisarAdminPedidoManual({ agendamento, cliente }) {
-    const texto = montarMensagemAdmin({ agendamento, cliente });
+    const texto = await montarMensagemAdmin({ agendamento, cliente });
     const para = numeroNotificacaoAdmin();
     if (!para) return { enviado: false, url: null };
     try {

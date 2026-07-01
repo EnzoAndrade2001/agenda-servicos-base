@@ -1,4 +1,4 @@
-const CACHE_NAME = 'agenda-servicos-base-v2';
+const CACHE_NAME = 'agenda-servicos-base-v3';
 const STATIC_ASSETS = [
     '/',
     '/styles.css?v=18',
@@ -6,11 +6,9 @@ const STATIC_ASSETS = [
     '/app.js?v=22',
     '/custom-select.js?v=1',
     '/pwa-mode.js?v=3',
-    '/manifest.webmanifest?v=5',
-    '/manifest-admin.webmanifest?v=4',
-    '/icon.svg?v=2',
-    '/icon-180.png?v=1',
-    '/icon-512.png?v=1',
+    '/manifest.webmanifest?v=6',
+    '/manifest-admin.webmanifest?v=5',
+    '/icon.svg?v=3',
     '/lookbook-1.svg?v=2',
     '/lookbook-2.svg?v=2',
     '/lookbook-3.svg?v=2'

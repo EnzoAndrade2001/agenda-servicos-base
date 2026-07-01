@@ -53,5 +53,7 @@ router.get('/lembretes/retorno', adminAuth.exigirAdmin, sistema.lembretesRetorno
 router.get('/resumo', adminAuth.exigirAdmin, sistema.resumo);
 router.get('/configuracoes', adminAuth.exigirAdmin, sistema.buscarConfiguracoes);
 router.patch('/configuracoes', adminAuth.exigirAdmin, sistema.atualizarConfiguracoes);
+router.get('/configuracoes/negocio', adminAuth.exigirAdmin, sistema.buscarNegocio);
+router.patch('/configuracoes/negocio', adminAuth.exigirAdmin, sistema.atualizarNegocio);
 
 module.exports = router;
