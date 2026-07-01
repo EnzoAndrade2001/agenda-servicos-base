@@ -1,6 +1,6 @@
-# Agenda de Servicos Base
+# AgendaPro Base
 
-Sistema base para agendamento online de servicos, pensado para ser clonado e
+Sistema base do AgendaPro para agendamento online de servicos, pensado para ser clonado e
 personalizado para pequenos negocios que trabalham com hora marcada.
 
 Inclui site publico, painel administrativo mobile-first, agenda com validacao de
@@ -95,7 +95,7 @@ Para configurar um cliente novo, siga o roteiro em `SETUP_CLIENTE.md`.
 Depois do primeiro deploy, nome publico, responsavel, regiao e textos principais
 tambem podem ser ajustados diretamente no painel admin, na aba `Negocio`.
 
-Para divulgar o produto em si, use a pagina `/produto`. Configure
+Para divulgar o AgendaPro, use a pagina `/produto`. Configure
 `SALES_WHATSAPP_NUMBER` para ativar o botao comercial de WhatsApp.
 
 ## Pagamentos

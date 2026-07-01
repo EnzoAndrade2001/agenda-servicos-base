@@ -8,6 +8,12 @@ async function carregarContato() {
         const response = await fetch('/api/produto');
         if (!response.ok) throw new Error('Contato comercial nao configurado.');
         const data = await response.json();
+        if (data.product_name) {
+            document.querySelectorAll('[data-product-name]').forEach((node) => {
+                node.textContent = data.product_name;
+            });
+            document.title = `${data.product_name} | Sistema de Agendamento`;
+        }
         if (!data.sales_whatsapp) throw new Error('Contato comercial nao configurado.');
         const texto = encodeURIComponent('Oi! Quero conhecer o sistema de agendamento.');
         const url = `https://wa.me/${data.sales_whatsapp}?text=${texto}`;

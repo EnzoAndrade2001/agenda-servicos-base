@@ -50,6 +50,8 @@ services:
         value: Endereco ou forma de atendimento combinados apos a confirmacao.
       - key: WHATSAPP_BUSINESS_NUMBER
         sync: false
+      - key: PRODUCT_NAME
+        value: AgendaPro
       - key: SALES_WHATSAPP_NUMBER
         sync: false
       - key: SALES_EMAIL

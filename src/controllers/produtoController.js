@@ -1,5 +1,6 @@
 function info(req, res) {
     res.json({
+        product_name: process.env.PRODUCT_NAME || 'AgendaPro',
         sales_whatsapp: process.env.SALES_WHATSAPP_NUMBER
             ? String(process.env.SALES_WHATSAPP_NUMBER).replace(/\D/g, '')
             : null,
