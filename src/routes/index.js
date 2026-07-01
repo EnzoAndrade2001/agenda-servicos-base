@@ -7,6 +7,7 @@ const pagamentos = require('../controllers/pagamentosController');
 const publico = require('../controllers/publicoController');
 const repasses = require('../controllers/repassesController');
 const whatsapp = require('../controllers/whatsappController');
+const produto = require('../controllers/produtoController');
 const adminAuth = require('../middleware/adminAuth');
 
 const router = express.Router();
@@ -45,6 +46,7 @@ router.get('/webhooks/whatsapp', whatsapp.verificarWebhook);
 router.post('/webhooks/whatsapp', whatsapp.receberWebhook);
 
 router.get('/publico', sistema.infoPublica);
+router.get('/produto', produto.info);
 router.post('/publico/agendamentos', publico.agendar);
 router.get('/disponibilidade', sistema.disponibilidade);
 router.get('/disponibilidade/grade', sistema.gradeDisponibilidade);

@@ -18,6 +18,7 @@ function resolveFile(url) {
     const clean = decodeURIComponent(String(url || '/').split('?')[0]);
     let file = clean === '/' ? 'index.html' : clean.replace(/^\/+/, '');
     if (file === 'admin') file = 'admin.html';
+    if (file === 'produto') file = 'produto.html';
     const target = path.normalize(path.join(root, file));
     return target.startsWith(root) ? target : null;
 }

@@ -39,6 +39,7 @@ npm start
 Por padrao:
 
 - site publico: `http://localhost:3000`
+- pagina comercial: `http://localhost:3000/produto`
 - painel admin: `http://localhost:3000/admin`
 - API: `http://localhost:3000/api`
 
@@ -93,6 +94,9 @@ Para configurar um cliente novo, siga o roteiro em `SETUP_CLIENTE.md`.
 
 Depois do primeiro deploy, nome publico, responsavel, regiao e textos principais
 tambem podem ser ajustados diretamente no painel admin, na aba `Negocio`.
+
+Para divulgar o produto em si, use a pagina `/produto`. Configure
+`SALES_WHATSAPP_NUMBER` para ativar o botao comercial de WhatsApp.
 
 ## Pagamentos
 

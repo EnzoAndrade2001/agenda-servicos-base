@@ -110,6 +110,11 @@ function createApp() {
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>${baseUrl}/produto</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>`);
     });
     app.get('/manifest.webmanifest', (req, res) => {
@@ -167,6 +172,7 @@ function createApp() {
     }
     app.use(express.static(publicDir));
     app.get('/servicos', (req, res) => res.sendFile(path.join(publicDir, 'index.html')));
+    app.get('/produto', (req, res) => res.sendFile(path.join(publicDir, 'produto.html')));
     app.get('/api/health', (req, res) => res.json({ ok: true }));
     app.get('/api', (req, res) => res.json({
         endpoints: [
