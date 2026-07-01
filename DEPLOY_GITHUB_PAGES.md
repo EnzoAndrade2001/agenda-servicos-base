@@ -20,9 +20,10 @@ Para publicar:
 
 1. Abra o repositorio no GitHub.
 2. Entre em `Settings` > `Pages`.
-3. Em `Build and deployment`, selecione `GitHub Actions`.
-4. Va em `Actions`.
-5. Rode o workflow `Publicar demo estatica` ou envie um novo commit na branch `main`.
+3. Em `Build and deployment`, escolha `Deploy from a branch`.
+4. Em `Branch`, selecione `main`.
+5. Em pasta, selecione `/docs`.
+6. Clique em `Save`.
 
 Depois de alguns instantes, a URL ficara parecida com:
 
@@ -37,5 +38,7 @@ Links principais:
 /demo/     Demo publica cliente
 /admin.html Preview do painel
 ```
+
+Quando precisar atualizar a demo, rode `npm run pages:build`, commite a pasta `docs` e envie para o GitHub.
 
 Quando precisar do sistema real com pagamentos e banco, use um deploy Node com PostgreSQL.

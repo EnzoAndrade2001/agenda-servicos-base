@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#f4f7f8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Agenda">
+    <meta name="description" content="Agenda de Servicos: agendamento online com horarios, servicos, pagamentos e painel administrativo.">
+    <meta property="og:title" content="Agenda de Servicos">
+    <meta property="og:description" content="Escolha horario, veja os servicos possiveis e agende online.">
+    <meta property="og:type" content="website">
+    <title>Agenda de Servicos</title>
+    <link rel="icon" type="image/svg+xml" href="../icon.svg?v=3">
+    <link rel="apple-touch-icon" href="../icon.svg?v=3">
+    <link rel="manifest" href="../manifest.webmanifest?v=6">
+    <link rel="stylesheet" href="../styles.css?v=19">
+</head>
+<body class="site-body">
+    <header class="site-hero">
+        <nav class="site-nav" aria-label="Navegacao principal">
+            <a class="brand-lockup public-brand" href="../" aria-label="Agenda de Servicos">
+                <span class="brand-mark">A</span>
+                <span class="brand-text">
+                    <span class="brand-name">Agenda de Servicos</span>
+                    <span class="brand-subtitle">Atendimento com hora marcada</span>
+                </span>
+            </a>
+            <span class="location-badge">Informe sua regiao</span>
+        </nav>
+        <section class="hero-content">
+            <p class="hero-kicker">Atendimento com hora marcada</p>
+            <h1>Escolha o servico ideal e reserve seu horario</h1>
+                    <p id="heroBookingText">Veja horarios disponiveis e escolha entre os servicos que cabem na agenda.</p>
+            <a id="heroWhatsapp" class="primary-button hero-action" href="#servicos">Chamar no WhatsApp</a>
+        </section>
+    </header>
+
+    <main class="site-main">
+        <section class="lookbook-section" aria-label="Fotos de trabalhos">
+            <div class="lookbook-copy">
+                <p class="hero-kicker">Trabalhos recentes</p>
+                <h2>Apresente fotos reais dos trabalhos, ambientes ou resultados</h2>
+            </div>
+            <div class="lookbook-grid">
+                <figure class="lookbook-card">
+                    <img src="../lookbook-1.svg?v=2" alt="Imagem demonstrativa de um atendimento">
+                    <figcaption>Atendimento</figcaption>
+                </figure>
+                <figure class="lookbook-card featured">
+                    <img src="../lookbook-2.svg?v=2" alt="Detalhe visual de um servico em destaque">
+                    <figcaption>Servico em destaque</figcaption>
+                </figure>
+                <figure class="lookbook-card">
+                    <img src="../lookbook-3.svg?v=2" alt="Imagem demonstrativa de resultado do servico">
+                    <figcaption>Resultado</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="availability-section" id="horarios">
+            <div class="section-head availability-head">
+                <div>
+                    <h2>Horarios</h2>
+                    <p>Escolha primeiro o horario; depois mostramos os servicos possiveis nele.</p>
+                </div>
+            </div>
+            <div id="publicSetupNotice" class="setup-banner" hidden></div>
+            <form id="availabilityForm" class="availability-form">
+                <label>
+                    Data
+                    <input id="availabilityDate" type="date" required>
+                </label>
+                <button class="secondary-button" type="submit">Ver horarios</button>
+            </form>
+            <div class="availability-legend" aria-hidden="true">
+                <span><i class="dot available"></i>Horarios disponiveis</span>
+            </div>
+            <div id="availabilityGrid" class="availability-grid" aria-live="polite"></div>
+            <section id="bookingPanel" class="booking-panel" hidden>
+                <div class="section-head">
+                    <div>
+                        <h2>Reservar horario</h2>
+                        <p id="bookingSummary">Escolha um horario livre.</p>
+                    </div>
+                </div>
+                <form id="bookingForm" class="booking-form">
+                    <label class="wide">
+                        Servico disponivel neste horario
+                        <select id="bookingService" required></select>
+                    </label>
+                    <label>
+                        Nome
+                        <input id="bookingName" type="text" maxlength="120" autocomplete="name" required>
+                        <span class="field-error" data-error-for="bookingName"></span>
+                    </label>
+                    <label>
+                        WhatsApp
+                        <input id="bookingPhone" type="tel" inputmode="tel" maxlength="15" autocomplete="tel" placeholder="(51) 99999-9999" required>
+                        <span class="field-error" data-error-for="bookingPhone"></span>
+                    </label>
+                    <label>
+                        Email para pagamento online
+                        <input id="bookingEmail" type="email" maxlength="160" autocomplete="email" required>
+                        <span class="field-error" data-error-for="bookingEmail"></span>
+                    </label>
+                    <label>
+                        CPF para pagamento
+                        <input id="bookingDocument" type="text" inputmode="numeric" maxlength="18" autocomplete="off">
+                        <span class="field-error" data-error-for="bookingDocument"></span>
+                    </label>
+                    <label>
+                        Metodo de pagamento
+                        <select id="bookingPaymentMethod" required>
+                            <option value="pix_online">Pix online</option>
+                            <option value="cartao_online">Cartao online</option>
+                            <option value="pix_manual">Pix manual na hora</option>
+                            <option value="dinheiro">Dinheiro na hora</option>
+                        </select>
+                    </label>
+                    <label>
+                        Pagamento
+                        <select id="bookingChargeType" required>
+                            <option value="sinal_30">Entrada 30%</option>
+                            <option value="sinal_50">Entrada 50%</option>
+                            <option value="total">Total no Pix</option>
+                        </select>
+                    </label>
+                    <label class="wide">
+                        Observacoes
+                        <textarea id="bookingNotes" rows="2" maxlength="1000" placeholder="Ex: formato, cor ou manutencao"></textarea>
+                    </label>
+                    <div class="booking-actions wide">
+                        <button class="primary-button" type="submit">Gerar QR Pix</button>
+                        <button id="bookingWhatsapp" class="secondary-button" type="button">Continuar no WhatsApp</button>
+                    </div>
+                </form>
+                <p id="bookingSetupHint" class="setup-hint" hidden></p>
+                <div id="paymentResult" class="payment-result" hidden></div>
+            </section>
+        </section>
+
+        <section class="services-section" id="servicos">
+            <div class="section-head services-head">
+                <div>
+                    <h2>Servicos</h2>
+                    <p>Valores pre definidos para agilizar o agendamento.</p>
+                </div>
+            </div>
+            <div id="publicServices" class="services-grid" aria-live="polite"></div>
+        </section>
+
+        <section class="local-note" aria-label="Localidade de atendimento">
+            <strong id="locationTitle">Atendimento com local combinado</strong>
+            <span id="locationDescription">Endereco ou forma de atendimento combinados apos a confirmacao.</span>
+        </section>
+    </main>
+
+    <div class="mobile-cta">
+        <a id="bottomWhatsapp" class="primary-button" href="#servicos">Chamar no WhatsApp</a>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="../pwa-mode.js?v=3"></script>
+    <script src="../custom-select.js?v=1"></script>
+    <script src="../servicos.js?v=27"></script>
+</body>
+</html>

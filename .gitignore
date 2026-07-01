@@ -4,4 +4,3 @@ coverage/
 npm-debug.log*
 server.log
 server-error.log
-dist-pages/

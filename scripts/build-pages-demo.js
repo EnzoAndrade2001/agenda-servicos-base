@@ -3,7 +3,7 @@ const path = require('path');
 
 const root = path.join(__dirname, '..');
 const publicDir = path.join(root, 'public');
-const distDir = path.join(root, 'dist-pages');
+const distDir = path.join(root, 'docs');
 
 function copyRecursive(source, target) {
     const stat = fs.statSync(source);
@@ -56,7 +56,11 @@ function rewriteProductJs(js) {
     return js.replace("botao.href = '/admin';", "botao.href = 'admin.html';");
 }
 
-fs.rmSync(distDir, { recursive: true, force: true });
+fs.mkdirSync(distDir, { recursive: true });
+for (const entry of fs.readdirSync(distDir)) {
+    if (entry.toLowerCase().endsWith('.md')) continue;
+    fs.rmSync(path.join(distDir, entry), { recursive: true, force: true });
+}
 copyRecursive(publicDir, distDir);
 fs.mkdirSync(path.join(distDir, 'demo'), { recursive: true });
 
@@ -75,7 +79,7 @@ fs.writeFileSync(path.join(distDir, 'produto.js'), rewriteProductJs(produtoJs));
 fs.writeFileSync(path.join(distDir, '.nojekyll'), '');
 fs.writeFileSync(
     path.join(distDir, 'README.txt'),
-    'Demo estatica do AgendaPro gerada para GitHub Pages. Backend, banco e pagamentos reais exigem deploy Node.\n'
+    'Demo estatica do AgendaPro gerada para GitHub Pages via pasta /docs. Backend, banco e pagamentos reais exigem deploy Node.\n'
 );
 
 console.log(`Demo estatica gerada em ${distDir}`);

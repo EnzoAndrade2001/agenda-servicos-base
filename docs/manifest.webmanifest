@@ -1,0 +1,40 @@
+{
+    "name": "Agenda de Servicos",
+    "short_name": "Agenda",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait",
+    "background_color": "#f4f7f8",
+    "theme_color": "#f4f7f8",
+    "description": "Agendamento online de servicos.",
+    "categories": ["beauty", "business", "lifestyle"],
+    "icons": [
+        {
+            "src": "/icon.svg?v=3",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Horarios",
+            "short_name": "Horarios",
+            "url": "/#horarios",
+            "description": "Ver horarios disponiveis"
+        },
+        {
+            "name": "Servicos",
+            "short_name": "Servicos",
+            "url": "/#servicos",
+            "description": "Ver servicos e valores"
+        },
+        {
+            "name": "Painel admin",
+            "short_name": "Admin",
+            "url": "/painel-admin",
+            "description": "Abrir painel administrativo"
+        }
+    ]
+}
