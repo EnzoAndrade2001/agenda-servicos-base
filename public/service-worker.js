@@ -2,7 +2,7 @@ const CACHE_NAME = 'agenda-servicos-base-v4';
 const STATIC_ASSETS = [
     '/',
     '/styles.css?v=19',
-    '/produto.css?v=1',
+    '/produto.css?v=2',
     '/produto.js?v=1',
     '/servicos.js?v=27',
     '/app.js?v=22',
