@@ -101,6 +101,9 @@ Para divulgar o AgendaPro, use a pagina `/produto`. Configure
 Para publicar uma demo comercial com a landing na URL principal, siga
 `DEPLOY_COMERCIAL.md`.
 
+Para divulgar uma demo gratuita sem servidor, banco ou pagamentos reais, use
+`DEPLOY_GITHUB_PAGES.md`.
+
 ## Pagamentos
 
 Pagamentos online usam Asaas:

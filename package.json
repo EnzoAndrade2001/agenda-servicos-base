@@ -10,6 +10,7 @@
     "start": "node index.js",
     "dev": "node --watch index.js",
     "preview:front": "node scripts/preview-static.js",
+    "pages:build": "node scripts/build-pages-demo.js",
     "hash:admin": "node scripts/hash-admin-password.js",
     "migrate": "node -e \"require('./src/config/migrations').executarMigracoes().then(() => process.exit()).catch(e => { console.error(e); process.exit(1); })\"",
     "test": "node --test"
